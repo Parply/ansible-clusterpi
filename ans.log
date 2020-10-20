@@ -1,0 +1,300 @@
+
+PLAY [raspberry_pi] ************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [alexclusterctrl]
+ok: [pi3]
+ok: [pi1]
+ok: [pi4]
+ok: [pi2]
+
+TASK [common : Update and upgrade apt packages] ********************************
+ok: [alexclusterctrl]
+ok: [pi3]
+ok: [pi4]
+ok: [pi1]
+ok: [pi2]
+
+TASK [common : Install packages] ***********************************************
+ok: [alexclusterctrl]
+ok: [pi1]
+ok: [pi2]
+ok: [pi4]
+ok: [pi3]
+
+TASK [common : pip] ************************************************************
+ok: [alexclusterctrl]
+ok: [pi4]
+ok: [pi1]
+ok: [pi2]
+ok: [pi3]
+
+TASK [common : clone oh-my-zsh for users] **************************************
+ok: [alexclusterctrl]
+ok: [pi4]
+ok: [pi1]
+ok: [pi2]
+ok: [pi3]
+
+TASK [common : set permissions of oh-my-zsh for users] *************************
+ok: [alexclusterctrl]
+ok: [pi2]
+ok: [pi1]
+ok: [pi4]
+ok: [pi3]
+
+TASK [common : set default shell for users] ************************************
+ok: [alexclusterctrl]
+ok: [pi1]
+ok: [pi3]
+ok: [pi4]
+ok: [pi2]
+
+TASK [common : write .zshrc for users] *****************************************
+ok: [alexclusterctrl]
+ok: [pi1]
+ok: [pi4]
+ok: [pi2]
+ok: [pi3]
+
+TASK [rpi_exporter : Creating RPi exporter user group] *************************
+ok: [alexclusterctrl]
+ok: [pi3]
+ok: [pi1]
+ok: [pi4]
+ok: [pi2]
+
+TASK [rpi_exporter : Creating RPi exporter user] *******************************
+ok: [alexclusterctrl]
+ok: [pi1]
+ok: [pi2]
+ok: [pi3]
+ok: [pi4]
+
+TASK [rpi_exporter : CPU] ******************************************************
+ok: [pi1] => {
+    "ansible_facts['machine']": "armv6l"
+}
+ok: [pi2] => {
+    "ansible_facts['machine']": "armv6l"
+}
+ok: [pi3] => {
+    "ansible_facts['machine']": "armv6l"
+}
+ok: [pi4] => {
+    "ansible_facts['machine']": "armv6l"
+}
+ok: [alexclusterctrl] => {
+    "ansible_facts['machine']": "armv7l"
+}
+
+TASK [rpi_exporter : Install RPi Exporter] *************************************
+skipping: [pi1]
+skipping: [pi2]
+skipping: [pi3]
+skipping: [pi4]
+changed: [alexclusterctrl]
+
+TASK [rpi_exporter : Copy RPi Exporter file to bin] ****************************
+skipping: [pi1]
+skipping: [pi2]
+skipping: [pi3]
+skipping: [pi4]
+ok: [alexclusterctrl]
+
+TASK [rpi_exporter : Delete RPi Exporter tmp folder] ***************************
+skipping: [pi1]
+skipping: [pi2]
+skipping: [pi3]
+skipping: [pi4]
+changed: [alexclusterctrl]
+
+TASK [rpi_exporter : Install RPi Exporter] *************************************
+skipping: [alexclusterctrl]
+changed: [pi4]
+changed: [pi1]
+changed: [pi3]
+changed: [pi2]
+
+TASK [rpi_exporter : Copy RPi Exporter file to bin] ****************************
+skipping: [alexclusterctrl]
+ok: [pi1]
+ok: [pi2]
+ok: [pi3]
+ok: [pi4]
+
+TASK [rpi_exporter : Delete RPi Exporter tmp folder] ***************************
+skipping: [alexclusterctrl]
+changed: [pi1]
+changed: [pi2]
+changed: [pi3]
+changed: [pi4]
+
+TASK [rpi_exporter : Copy systemd init file] ***********************************
+ok: [alexclusterctrl]
+ok: [pi1]
+ok: [pi3]
+ok: [pi2]
+ok: [pi4]
+
+TASK [rpi_exporter : Start RPi Exporter service] *******************************
+ok: [alexclusterctrl]
+ok: [pi2]
+ok: [pi4]
+ok: [pi3]
+ok: [pi1]
+
+TASK [rpi_exporter : Check if RPi exporter emits metrices] *********************
+ok: [alexclusterctrl]
+ok: [pi2]
+ok: [pi4]
+ok: [pi1]
+ok: [pi3]
+
+TASK [Creating node_exporter user group] ***************************************
+ok: [alexclusterctrl]
+ok: [pi1]
+ok: [pi2]
+ok: [pi3]
+ok: [pi4]
+
+TASK [Creating node_exporter user] *********************************************
+ok: [alexclusterctrl]
+ok: [pi1]
+ok: [pi2]
+ok: [pi3]
+ok: [pi4]
+
+TASK [node_exporter : Install prometheus node exporter] ************************
+skipping: [pi1]
+skipping: [pi2]
+skipping: [pi3]
+skipping: [pi4]
+changed: [alexclusterctrl]
+
+TASK [node_exporter : Copy prometheus node exporter file to bin] ***************
+skipping: [pi1]
+skipping: [pi2]
+skipping: [pi3]
+skipping: [pi4]
+ok: [alexclusterctrl]
+
+TASK [node_exporter : Delete node exporter tmp folder] *************************
+skipping: [pi1]
+skipping: [pi2]
+skipping: [pi3]
+skipping: [pi4]
+changed: [alexclusterctrl]
+
+TASK [node_exporter : Install prometheus node exporter] ************************
+skipping: [alexclusterctrl]
+changed: [pi2]
+changed: [pi1]
+changed: [pi4]
+changed: [pi3]
+
+TASK [node_exporter : Copy prometheus node exporter file to bin] ***************
+skipping: [alexclusterctrl]
+ok: [pi2]
+ok: [pi3]
+ok: [pi1]
+ok: [pi4]
+
+TASK [node_exporter : Delete node exporter tmp folder] *************************
+skipping: [alexclusterctrl]
+changed: [pi1]
+changed: [pi2]
+changed: [pi3]
+changed: [pi4]
+
+TASK [node_exporter : Copy systemd init file] **********************************
+ok: [alexclusterctrl]
+ok: [pi1]
+ok: [pi2]
+ok: [pi3]
+ok: [pi4]
+
+TASK [Start node_exporter service] *********************************************
+ok: [alexclusterctrl]
+ok: [pi1]
+ok: [pi2]
+ok: [pi3]
+ok: [pi4]
+
+TASK [node_exporter : Check if node exporter emits metrices] *******************
+ok: [alexclusterctrl]
+ok: [pi1]
+ok: [pi2]
+ok: [pi3]
+ok: [pi4]
+
+PLAY [monitoring_server] *******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [alexclusterctrl]
+
+TASK [monitoring_server : Install packages] ************************************
+ok: [alexclusterctrl]
+
+TASK [monitoring_server : Creating prometheus user group] **********************
+ok: [alexclusterctrl]
+
+TASK [monitoring_server : Creating prometheus user] ****************************
+ok: [alexclusterctrl]
+
+TASK [monitoring_server : Install prometheus] **********************************
+changed: [alexclusterctrl]
+
+TASK [monitoring_server : Copy prometheus file to bin] *************************
+ok: [alexclusterctrl]
+
+TASK [monitoring_server : Delete prometheus tmp folder] ************************
+changed: [alexclusterctrl]
+
+TASK [monitoring_server : Creates directory] ***********************************
+ok: [alexclusterctrl]
+
+TASK [monitoring_server : Creates directory] ***********************************
+ok: [alexclusterctrl]
+
+TASK [monitoring_server : Display IP address] **********************************
+ok: [alexclusterctrl] => {
+    "hostvars[inventory_hostname]['ansible_facts']['br0']['ipv4']['address']": "192.168.1.9"
+}
+
+TASK [monitoring_server : Display host] ****************************************
+ok: [alexclusterctrl] => {
+    "inventory_hostname": "alexclusterctrl"
+}
+
+TASK [monitoring_server : config file] *****************************************
+changed: [alexclusterctrl]
+
+TASK [monitoring_server : Copy systemd init file] ******************************
+changed: [alexclusterctrl]
+
+TASK [monitoring_server : Start prometheus service] ****************************
+changed: [alexclusterctrl]
+
+TASK [monitoring_server : Check if prometheus is accessible] *******************
+ok: [alexclusterctrl]
+
+TASK [monitoring_server : Download Grafana] ************************************
+changed: [alexclusterctrl]
+
+TASK [monitoring_server : Install Grafana] *************************************
+changed: [alexclusterctrl]
+
+TASK [monitoring_server : Start Grafana service] *******************************
+changed: [alexclusterctrl]
+
+RUNNING HANDLER [monitoring_server : Reload systemd] ***************************
+changed: [alexclusterctrl]
+
+PLAY RECAP *********************************************************************
+alexclusterctrl            : ok=44   changed=13   unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+pi1                        : ok=25   changed=4    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+pi2                        : ok=25   changed=4    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+pi3                        : ok=25   changed=4    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+pi4                        : ok=25   changed=4    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+
